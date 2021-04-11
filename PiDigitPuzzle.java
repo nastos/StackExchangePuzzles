@@ -8,8 +8,8 @@ public class PiDigitPuzzle {
 	// initialString: the starting state. Note that 0s are added at the front and end
 	// numMovesAllowed: set to 12 if you only want solutions of up to 12 steps 
 	// numIterations: how long you want this to go on for
-	static String startState = "3388766112";
-	static int numMovesAllowed = 4;
+	static String startState = "31415926535897932384";
+	static int numMovesAllowed = 12;
 	static int numIterations = 100_000_000;
 
 	// dont't touch the rest unless you know what you are doing
@@ -22,13 +22,11 @@ public class PiDigitPuzzle {
 		for (int attempts = 0; attempts < numIterations; attempts++) {
 			char[] c = initialString.toCharArray();
 			int[] a = new int[c.length];
-			for (int i = 0; i < c.length; i++)
-				a[i] = c[i] - '0';		
+			for (int i = 0; i < c.length; i++) a[i] = c[i] - '0';		
 			solve(a, numMovesAllowed);
 			//if (almostEqual(a)) break;
 			//if (allEqual(a)) win++;
-			if (allEqual(a))
-				break;
+			if (allEqual(a)) break;
 			
 			System.out.println(win + "/" + attempts);
 		}
